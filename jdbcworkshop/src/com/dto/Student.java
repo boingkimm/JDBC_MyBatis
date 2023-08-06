@@ -10,11 +10,10 @@ public class Student {
 	private String entDate;
 	private String absYn;
 	private String coachProfessorNo;
-	
+
 	public Student() {
 	}
 
-	
 	public Student(String stuNo, String stuName, String stuSsn, String stuAddress, String entDate, String absYn) {
 		this.stuNo = stuNo;
 		this.stuName = stuName;
@@ -95,8 +94,4 @@ public class Student {
 				+ coachProfessorNo + "]";
 	}
 
-
-	
-
 }
-

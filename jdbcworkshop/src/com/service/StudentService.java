@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.dao.StudentDAO;
+import com.dao.StudentDAO;
+import com.dto.Student;
 import com.dto.Student;
 
 public class StudentService {
@@ -23,6 +25,27 @@ public class StudentService {
 		}
 	}
 
+	public ArrayList<Student> selectByName(String str) {
+		ArrayList<Student> list = new ArrayList<Student>();
+		Connection con = null;
+		
+		try {
+			con = DriverManager.getConnection(url, userid, passwd);
+			StudentDAO dao = new StudentDAO();
+			list = dao.selectByName(con, str);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return list; 
+	}//selectByName
+	
 	public ArrayList<Student> selectAllStudent() {
 		
 		ArrayList<Student> list = new ArrayList<Student>();;
@@ -40,10 +63,9 @@ public class StudentService {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-
-		} // finally
- 
+		} 
 		return list;
-	}
+	}//selectAllStudent
+
 
 }
